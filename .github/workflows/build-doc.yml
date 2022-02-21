@@ -1,0 +1,17 @@
+name: Deploy documentation
+
+on: [push, pull_request]
+
+jobs:
+  doc-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/src/doc1
+          destination_dir: doc1
+          publish_branch: documentation
