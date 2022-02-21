@@ -8,10 +8,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Deploy documentation
+      - name: Deploy index
+        uses: peaceiris/actions-gh-pages@v3
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/src/index
+          publish_branch: documentation
+      - name: Deploy doc1
         uses: peaceiris/actions-gh-pages@v3
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ github.workspace }}/src/doc1
           destination_dir: doc1
+          publish_branch: documentation
+      - name: Deploy doc2
+        uses: peaceiris/actions-gh-pages@v3
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/src/doc2
+          destination_dir: doc2
           publish_branch: documentation
